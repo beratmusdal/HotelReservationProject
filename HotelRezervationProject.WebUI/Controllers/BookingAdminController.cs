@@ -29,6 +29,21 @@ namespace HotelReservationProject.WebUI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> ApprovedReservation(ApprovedReservationDto approvedReservationDto)
+        {            
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(approvedReservationDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("http://localhost:1651/api/Booking/", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> UpdateBooking(int id)
         {

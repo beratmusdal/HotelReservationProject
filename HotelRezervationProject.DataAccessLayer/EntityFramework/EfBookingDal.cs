@@ -15,5 +15,6 @@ namespace HotelReservationProject.DataAccessLayer.EntityFramework
         public EfBookingDal(Context context) : base(context)
         {
         }
+        
     }
 }
