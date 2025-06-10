@@ -33,10 +33,13 @@ namespace HotelReservationProject.WebApi
             services.AddDbContext<Context>();
             services.AddScoped<IStaffDal, EfStaffDal>();
             services.AddScoped<IStaffService, StaffManager>();
+
             services.AddScoped<IRoomDal, EfRoomDal>();
             services.AddScoped<IRoomService, RoomManager>();
+
             services.AddScoped<IServiceDal, EfServiceDal>();
             services.AddScoped<IServiceService, ServiceManager>();
+
             services.AddScoped<ISubscribeDal, EfSubscribeDal>();
             services.AddScoped<ISubscribeService, SubscribeManager>();
             services.AddScoped<ITestimonialDal, EfTestimonialDal>();

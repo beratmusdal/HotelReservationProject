@@ -1,4 +1,10 @@
-﻿namespace HotelReservationProject.WebUI.Dtos.RoomDto
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HotelReservationProject.DtoLayer.RoomDto
 {
     public class ResultRoomDto
     {
@@ -11,6 +17,5 @@
         public string BathCount { get; set; }
         public string Wifi { get; set; }
         public string Description { get; set; }
-
     }
 }

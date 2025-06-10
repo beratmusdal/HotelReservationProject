@@ -1,0 +1,45 @@
+﻿@model List<RoomDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Oda Numarası</th>
+        <th>Başlık</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.RoomNumber</td>
+            <td>@item.Title</td>
+            <td>
+                <form method="post" action="/AdminRoom/DeleteRoom/@item.RoomID" style="display:inline;">
+                    <button type="submit" class="btn mb-1 btn-rounded btn-outline-danger"
+                            onclick="return confirm('Bu odayı silmek istediğinizden emin misiniz?')">
+                        Sil
+                    </button>
+                </form>
+            </td>
+            <td><a href="/AdminRoom/UpdateRoom/@item.RoomID" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/AdminRoom/AddRoom/" class="btn mb-1 btn-rounded btn-outline-info">Yeni Oda Girişi</a>
